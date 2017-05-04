@@ -1,0 +1,6195 @@
+{
+"basePath": "/rest",
+"definitions": {
+"AboutInfo": {
+"properties": {
+"apiVersion": {
+"type": "string"
+},
+"build": {
+"type": "string"
+},
+"displayVersion": {
+"type": "string"
+},
+"fullName": {
+"type": "string"
+},
+"instanceUuid": {
+"type": "string"
+},
+"locale": {
+"type": "string"
+},
+"modelNumber": {
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"pid": {
+"type": "string"
+},
+"productVersion": {
+"type": "string"
+},
+"serialNumber": {
+"type": "string"
+},
+"serviceType": {
+"type": "string"
+},
+"setApiVersion": {
+"default": false,
+"type": "boolean"
+},
+"setBuild": {
+"default": false,
+"type": "boolean"
+},
+"setDisplayVersion": {
+"default": false,
+"type": "boolean"
+},
+"setFullName": {
+"default": false,
+"type": "boolean"
+},
+"setInstanceUuid": {
+"default": false,
+"type": "boolean"
+},
+"setLocale": {
+"default": false,
+"type": "boolean"
+},
+"setModelNumber": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setPid": {
+"default": false,
+"type": "boolean"
+},
+"setProductVersion": {
+"default": false,
+"type": "boolean"
+},
+"setSerialNumber": {
+"default": false,
+"type": "boolean"
+},
+"setServiceType": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"Alarm": {
+"properties": {
+"acknowledged": {
+"type": "boolean"
+},
+"description": {
+"type": "string"
+},
+"entity": {
+"$ref": "#/definitions/StringStringPair"
+},
+"entityName": {
+"type": "string"
+},
+"key": {
+"type": "string"
+},
+"mor": {
+"$ref": "#/definitions/StringStringPair"
+},
+"status": {
+"type": "string"
+},
+"triggeredTime": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"ApplianceDTO": {
+"properties": {
+"disks": {
+"items": {
+"$ref": "#/definitions/PhysicalDisk"
+},
+"type": "array",
+"uniqueItems": true
+},
+"modelNumber": {
+"type": "string"
+},
+"nodes": {
+"items": {
+"$ref": "#/definitions/SlotStNodeMap"
+},
+"type": "array"
+},
+"pnics": {
+"items": {
+"$ref": "#/definitions/PhysicalNicInfo"
+},
+"type": "array",
+"uniqueItems": true
+},
+"ps": {
+"items": {
+"$ref": "#/definitions/PowerSupply"
+},
+"type": "array",
+"uniqueItems": true
+},
+"serialNumber": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"Cluster": {
+"properties": {
+"effectiveCpu": {
+"format": "int32",
+"type": "integer"
+},
+"effectiveMemory": {
+"format": "int64",
+"type": "integer"
+},
+"id": {
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"numCpuCores": {
+"format": "int32",
+"type": "integer"
+},
+"numHosts": {
+"format": "int32",
+"type": "integer"
+},
+"overallStatus": {
+"type": "string"
+},
+"totalCpu": {
+"format": "int32",
+"type": "integer"
+},
+"totalMemory": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"CommandOutput": {
+"properties": {
+"error": {
+"default": false,
+"type": "boolean"
+},
+"output": {
+"type": "object"
+}
+},
+"type": "object"
+},
+"CreateSnapshotResultDTO": {
+"properties": {
+"snapshotId": {
+"type": "string"
+}
+},
+"required": [
+"snapshotId"
+],
+"type": "object"
+},
+"CustomSpec": {
+"properties": {
+"description": {
+"type": "string"
+},
+"lastUpdateTime": {
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"typeStr": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"DeleteSnapshotResult": {
+"properties": {
+"snapshotId": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"DynamicProperty": {
+"properties": {
+"name": {
+"type": "string"
+},
+"val": {
+"type": "object"
+}
+},
+"type": "object"
+},
+"EntityMessages": {
+"properties": {
+"entity": {
+"$ref": "#/definitions/EntityRef"
+},
+"messages": {
+"items": {
+"$ref": "#/definitions/Message"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"EntityNameEntityMessagesPair": {
+"properties": {
+"entityMessages": {
+"items": {
+"$ref": "#/definitions/EntityMessages"
+},
+"type": "array"
+},
+"entityName": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"EntityRef": {
+"properties": {
+"confignum": {
+"format": "int64",
+"type": "integer"
+},
+"id": {
+"type": "string"
+},
+"idtype": {
+"enum": [
+"VCMOID",
+"VMBIOSUUID",
+"VMDSPATH"
+],
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"setConfignum": {
+"default": false,
+"type": "boolean"
+},
+"setId": {
+"default": false,
+"type": "boolean"
+},
+"setIdtype": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setType": {
+"default": false,
+"type": "boolean"
+},
+"type": {
+"enum": [
+"DISK",
+"PNODE",
+"NODE",
+"CLUSTER",
+"DATASTORE",
+"VIRTNODE",
+"VIRTCLUSTER",
+"VIRTDATASTORE",
+"VIRTMACHINE",
+"PDISK",
+"PDATASTORE",
+"VIRTMACHINESNAPSHOT",
+"FOLDER",
+"RESOURCEPOOL",
+"FILE",
+"VIRTDATACENTER",
+"REPLICATION_APPLIANCE",
+"REPLICATION_JOB",
+"IP_POOL",
+"REPLICATION_INFO",
+"DP_VM_SNAPSHOT",
+"DP_VMGROUP_SNAPSHOT",
+"DP_VM",
+"DP_VMGROUP",
+"DP_VM_CONFIG",
+"DP_VM_SNAPSHOT_POINT",
+"CLUSTER_PAIR"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"EntityRefServerStatePair": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"stPlatformCleanerSchedule": {
+"enum": [
+"ONLINE",
+"OFFLINE"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"EntityRefStCleanerStatSetPair": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"stCleanerStat": {
+"items": {
+"$ref": "#/definitions/StCleanerStat"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"EntityRefStPlatformCleanerSchedulePair": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"stPlatformCleanerSchedule": {
+"$ref": "#/definitions/StPlatformCleanerSchedule"
+}
+},
+"type": "object"
+},
+"Event": {
+"properties": {
+"category": {
+"type": "string"
+},
+"createdTime": {
+"type": "string"
+},
+"key": {
+"format": "int32",
+"type": "integer"
+},
+"message": {
+"type": "string"
+},
+"username": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"Folder": {
+"properties": {
+"id": {
+"type": "string"
+},
+"name": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"IOVisor": {
+"properties": {
+"about": {
+"$ref": "#/definitions/AboutInfo"
+},
+"setAbout": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"ONLINE",
+"OFFLINE",
+"INMAINTENANCE",
+"INPROGRESS"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"IpSettings": {
+"properties": {
+"addr": {
+"type": "string"
+},
+"gateway": {
+"type": "string"
+},
+"method": {
+"enum": [
+"DHCP",
+"STATIC",
+"IP_POOL"
+],
+"type": "string"
+},
+"setAddr": {
+"default": false,
+"type": "boolean"
+},
+"setGateway": {
+"default": false,
+"type": "boolean"
+},
+"setMethod": {
+"default": false,
+"type": "boolean"
+},
+"setStService": {
+"default": false,
+"type": "boolean"
+},
+"setSubnetMask": {
+"default": false,
+"type": "boolean"
+},
+"setVlanId": {
+"default": false,
+"type": "boolean"
+},
+"stService": {
+"enum": [
+"STCTL",
+"ZK",
+"HYPERVISOR",
+"IPMI",
+"MGMT",
+"CLUSTER",
+"VMOTION",
+"STCTL_MGMT",
+"VM",
+"REPLICATION"
+],
+"type": "string"
+},
+"subnetMask": {
+"type": "string"
+},
+"vlanId": {
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"IteratorAppliance": {
+"type": "object"
+},
+"IteratorEntityRef": {
+"type": "object"
+},
+"IteratorLocalizableValue": {
+"type": "object"
+},
+"IteratorPowerSupply": {
+"type": "object"
+},
+"IteratorStDisk": {
+"type": "object"
+},
+"IteratorStNode": {
+"type": "object"
+},
+"IteratorStPortGroupSettings": {
+"type": "object"
+},
+"IteratorStep": {
+"type": "object"
+},
+"IteratorString": {
+"type": "object"
+},
+"JsonObject": {
+"properties": {
+"message": {
+"type": "string",
+"xml": {
+"attribute": true
+}
+},
+"messageId": {
+"format": "int32",
+"type": "integer",
+"xml": {
+"attribute": true
+}
+},
+"object": {
+"type": "object"
+}
+},
+"type": "object",
+"xml": {
+"name": "JsonObject"
+}
+},
+"KeyAnyValue": {
+"properties": {
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"key": {
+"type": "string"
+},
+"value": {
+"type": "object"
+}
+},
+"type": "object"
+},
+"LocalizableMessage": {
+"properties": {
+"arg": {
+"items": {
+"$ref": "#/definitions/KeyAnyValue"
+},
+"type": "array"
+},
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"key": {
+"type": "string"
+},
+"message": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"LocalizableValue": {
+"properties": {
+"key": {
+"type": "string"
+},
+"ltype": {
+"enum": [
+"UNKNOWN",
+"NUMBER",
+"STRING",
+"NAME",
+"EMAIL",
+"HOSTNAME",
+"DATETIME",
+"TIMEDELTA",
+"BYTESIZE"
+],
+"type": "string"
+},
+"position": {
+"format": "int32",
+"type": "integer"
+},
+"setKey": {
+"default": false,
+"type": "boolean"
+},
+"setLtype": {
+"default": false,
+"type": "boolean"
+},
+"setPosition": {
+"default": false,
+"type": "boolean"
+},
+"setValue": {
+"default": false,
+"type": "boolean"
+},
+"value": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"LocalizedMethodFault": {
+"properties": {
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"fault": {
+"$ref": "#/definitions/MethodFault"
+},
+"localizedMessage": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"ManagedObjectReference": {
+"properties": {
+"get_value": {
+"type": "string"
+},
+"type": {
+"type": "string"
+},
+"val": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"Message": {
+"properties": {
+"localizedMessage": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"messageString": {
+"type": "string"
+},
+"severity": {
+"enum": [
+"WARNING",
+"ERROR",
+"INFO"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"MethodFault": {
+"properties": {
+"cause": {
+"$ref": "#/definitions/Throwable"
+},
+"detail": {
+"$ref": "#/definitions/Throwable"
+},
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"faultCause": {
+"$ref": "#/definitions/LocalizedMethodFault"
+},
+"faultMessage": {
+"items": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"type": "array"
+},
+"localizedMessage": {
+"type": "string"
+},
+"message": {
+"type": "string"
+},
+"stackTrace": {
+"items": {
+"$ref": "#/definitions/StackTraceElement"
+},
+"type": "array"
+},
+"suppressed": {
+"items": {
+"$ref": "#/definitions/Throwable"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"PhysicalDisk": {
+"properties": {
+"capacity": {
+"format": "int64",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"logicalname": {
+"type": "string"
+},
+"modelNumber": {
+"type": "string"
+},
+"serialNumber": {
+"type": "string"
+},
+"setCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setLogicalname": {
+"default": false,
+"type": "boolean"
+},
+"setModelNumber": {
+"default": false,
+"type": "boolean"
+},
+"setSerialNumber": {
+"default": false,
+"type": "boolean"
+},
+"setSlotNumber": {
+"default": false,
+"type": "boolean"
+},
+"setStatus": {
+"default": false,
+"type": "boolean"
+},
+"setVendor": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"slotNumber": {
+"type": "string"
+},
+"status": {
+"type": "string"
+},
+"vendor": {
+"type": "string"
+},
+"version": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"PhysicalNicInfo": {
+"properties": {
+"device": {
+"type": "string"
+},
+"mac": {
+"type": "string"
+},
+"pci": {
+"type": "string"
+},
+"setDevice": {
+"default": false,
+"type": "boolean"
+},
+"setMac": {
+"default": false,
+"type": "boolean"
+},
+"setPci": {
+"default": false,
+"type": "boolean"
+},
+"setSpeedMb": {
+"default": false,
+"type": "boolean"
+},
+"speedMb": {
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"PowerSupply": {
+"properties": {
+"name": {
+"type": "string"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setStatus": {
+"default": false,
+"type": "boolean"
+},
+"status": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"RebalanceStatus": {
+"properties": {
+"rebalanceEnabled": {
+"default": false,
+"type": "boolean"
+},
+"rebalanceStatus": {
+"$ref": "#/definitions/StPlatformRebalanceStatus"
+},
+"setRebalanceEnabled": {
+"default": false,
+"type": "boolean"
+},
+"setRebalanceStatus": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"ReleaseManifest": {
+"properties": {
+"manifest": {
+"items": {
+"$ref": "#/definitions/StringStringPair"
+},
+"type": "array"
+},
+"release": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"ResourcePool": {
+"properties": {
+"cpuAllocType": {
+"type": "string"
+},
+"cpuLimit": {
+"format": "int64",
+"type": "integer"
+},
+"cpuReservation": {
+"format": "int64",
+"type": "integer"
+},
+"id": {
+"type": "string"
+},
+"memoryLimit": {
+"format": "int64",
+"type": "integer"
+},
+"memoryReservation": {
+"format": "int64",
+"type": "integer"
+},
+"name": {
+"type": "string"
+},
+"sharesCount": {
+"format": "int32",
+"type": "integer"
+},
+"sharesLevel": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"SlotStNodeMap": {
+"properties": {
+"nodePosition": {
+"type": "string"
+},
+"stNode": {
+"$ref": "#/definitions/StNode"
+}
+},
+"type": "object"
+},
+"StASUPConfiguration": {
+"properties": {
+"enabled": {
+"default": false,
+"type": "boolean"
+},
+"recipientList": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"recipientListIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"recipientListSize": {
+"format": "int32",
+"type": "integer"
+},
+"setEnabled": {
+"default": false,
+"type": "boolean"
+},
+"setRecipientList": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StCleanerStat": {
+"properties": {
+"curNumDeadKeys": {
+"format": "int64",
+"type": "integer"
+},
+"curNumLiveKeys": {
+"format": "int64",
+"type": "integer"
+},
+"curNumSegments": {
+"format": "int64",
+"type": "integer"
+},
+"deletedNumSegments": {
+"format": "int64",
+"type": "integer"
+},
+"ftVnodeNumber": {
+"format": "int32",
+"type": "integer"
+},
+"priorNumDeadKeys": {
+"format": "int64",
+"type": "integer"
+},
+"priorNumLiveKeys": {
+"format": "int64",
+"type": "integer"
+},
+"priorNumSegments": {
+"format": "int64",
+"type": "integer"
+},
+"totalAddressedVBABytes": {
+"format": "int64",
+"type": "integer"
+},
+"uniqueBytes": {
+"format": "int64",
+"type": "integer"
+},
+"uniqueVBABytes": {
+"format": "int64",
+"type": "integer"
+},
+"uniqueVBAs": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StCluster": {
+"properties": {
+"about": {
+"$ref": "#/definitions/AboutInfo"
+},
+"cluster": {
+"$ref": "#/definitions/StPlatformCluster"
+},
+"config": {
+"$ref": "#/definitions/StClusterConfig"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"message": {
+"type": "string"
+},
+"progress": {
+"items": {
+"$ref": "#/definitions/Step"
+},
+"type": "array"
+},
+"progressIterator": {
+"$ref": "#/definitions/IteratorStep"
+},
+"progressSize": {
+"format": "int32",
+"type": "integer"
+},
+"securityInfo": {
+"$ref": "#/definitions/StClusterSecurityInfo"
+},
+"setAbout": {
+"default": false,
+"type": "boolean"
+},
+"setCluster": {
+"default": false,
+"type": "boolean"
+},
+"setConfig": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setMessage": {
+"default": false,
+"type": "boolean"
+},
+"setProgress": {
+"default": false,
+"type": "boolean"
+},
+"setSecurityInfo": {
+"default": false,
+"type": "boolean"
+},
+"setStNodes": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setUpgradeState": {
+"default": false,
+"type": "boolean"
+},
+"setUpgradeVersion": {
+"default": false,
+"type": "boolean"
+},
+"setVCluster": {
+"default": false,
+"type": "boolean"
+},
+"stNodes": {
+"items": {
+"$ref": "#/definitions/EntityRef"
+},
+"type": "array",
+"uniqueItems": true
+},
+"stNodesIterator": {
+"$ref": "#/definitions/IteratorEntityRef"
+},
+"stNodesSize": {
+"format": "int32",
+"type": "integer"
+},
+"state": {
+"enum": [
+"UNKNOWN",
+"ONLINE",
+"OFFLINE",
+"DEGRADED",
+"WARNING",
+"FAILED",
+"INPROGRESS",
+"ENOSPACE",
+"READONLY"
+],
+"type": "string"
+},
+"upgradeState": {
+"enum": [
+"OK",
+"INPROGRESS",
+"WAITING",
+"FAILED"
+],
+"type": "string"
+},
+"upgradeVersion": {
+"type": "string"
+},
+"vCluster": {
+"$ref": "#/definitions/VirtCluster"
+},
+"vcluster": {
+"$ref": "#/definitions/VirtCluster"
+}
+},
+"type": "object"
+},
+"StClusterConfig": {
+"properties": {
+"clusterAccessPolicy": {
+"type": "string"
+},
+"clusterUuid": {
+"type": "string"
+},
+"dataReplicationFactor": {
+"format": "int32",
+"type": "integer"
+},
+"dnsServers": {
+"items": {
+"type": "string"
+},
+"type": "array",
+"uniqueItems": true
+},
+"dnsServersIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"dnsServersSize": {
+"format": "int32",
+"type": "integer"
+},
+"ip": {
+"$ref": "#/definitions/IpSettings"
+},
+"mgmtIp": {
+"$ref": "#/definitions/IpSettings"
+},
+"name": {
+"type": "string"
+},
+"nodeIPSettings": {
+"additionalProperties": {
+"items": {
+"$ref": "#/definitions/IpSettings"
+},
+"type": "array"
+},
+"type": "object"
+},
+"nodeIPSettingsSize": {
+"format": "int32",
+"type": "integer"
+},
+"ntpServer": {
+"type": "string"
+},
+"setClusterAccessPolicy": {
+"default": false,
+"type": "boolean"
+},
+"setClusterUuid": {
+"default": false,
+"type": "boolean"
+},
+"setDataReplicationFactor": {
+"default": false,
+"type": "boolean"
+},
+"setDnsServers": {
+"default": false,
+"type": "boolean"
+},
+"setIp": {
+"default": false,
+"type": "boolean"
+},
+"setMgmtIp": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setNodeIPSettings": {
+"default": false,
+"type": "boolean"
+},
+"setNtpServer": {
+"default": false,
+"type": "boolean"
+},
+"setSize": {
+"default": false,
+"type": "boolean"
+},
+"setUserDatastore": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterClusterId": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterClusterName": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterDatacenter": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterDatacenterId": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterSSOURL": {
+"default": false,
+"type": "boolean"
+},
+"setVCenterURL": {
+"default": false,
+"type": "boolean"
+},
+"setVClusterConfig": {
+"default": false,
+"type": "boolean"
+},
+"setWorkloadType": {
+"default": false,
+"type": "boolean"
+},
+"size": {
+"format": "int32",
+"type": "integer"
+},
+"userDatastore": {
+"$ref": "#/definitions/StDatastoreConfig"
+},
+"vCenterClusterId": {
+"type": "string"
+},
+"vCenterClusterName": {
+"type": "string"
+},
+"vCenterDatacenter": {
+"type": "string"
+},
+"vCenterDatacenterId": {
+"type": "string"
+},
+"vCenterSSOURL": {
+"type": "string"
+},
+"vCenterURL": {
+"type": "string"
+},
+"vClusterConfig": {
+"$ref": "#/definitions/VirtClusterConfig"
+},
+"vcenterClusterId": {
+"type": "string"
+},
+"vcenterClusterName": {
+"type": "string"
+},
+"vcenterDatacenter": {
+"type": "string"
+},
+"vcenterDatacenterId": {
+"type": "string"
+},
+"vcenterSSOURL": {
+"type": "string"
+},
+"vcenterURL": {
+"type": "string"
+},
+"vclusterConfig": {
+"$ref": "#/definitions/VirtClusterConfig"
+},
+"workloadType": {
+"enum": [
+"AUTO_RESERVED",
+"VDI",
+"VSI"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StClusterCreationProgress": {
+"properties": {
+"appliance_list": {
+"items": {
+"$ref": "#/definitions/ApplianceDTO"
+},
+"type": "array",
+"uniqueItems": true
+},
+"appliance_listIterator": {
+"$ref": "#/definitions/IteratorAppliance"
+},
+"appliance_listSize": {
+"format": "int32",
+"type": "integer"
+},
+"asup_config": {
+"$ref": "#/definitions/StASUPConfiguration"
+},
+"cluster": {
+"$ref": "#/definitions/StCluster"
+},
+"creation_date": {
+"format": "int64",
+"type": "integer"
+},
+"creation_id": {
+"type": "string"
+},
+"creation_status": {
+"enum": [
+"INPROGRESS",
+"COMPLETE",
+"FAILED"
+],
+"type": "string"
+},
+"fault": {
+"$ref": "#/definitions/StException"
+},
+"launch_addr": {
+"type": "string"
+},
+"network_settings": {
+"$ref": "#/definitions/StNetworkSettings"
+},
+"nodes": {
+"items": {
+"$ref": "#/definitions/StNode"
+},
+"type": "array",
+"uniqueItems": true
+},
+"nodesIterator": {
+"$ref": "#/definitions/IteratorStNode"
+},
+"nodesSize": {
+"format": "int32",
+"type": "integer"
+},
+"setAppliance_list": {
+"default": false,
+"type": "boolean"
+},
+"setAsup_config": {
+"default": false,
+"type": "boolean"
+},
+"setCluster": {
+"default": false,
+"type": "boolean"
+},
+"setCreation_date": {
+"default": false,
+"type": "boolean"
+},
+"setCreation_id": {
+"default": false,
+"type": "boolean"
+},
+"setCreation_status": {
+"default": false,
+"type": "boolean"
+},
+"setFault": {
+"default": false,
+"type": "boolean"
+},
+"setLaunch_addr": {
+"default": false,
+"type": "boolean"
+},
+"setNetwork_settings": {
+"default": false,
+"type": "boolean"
+},
+"setNodes": {
+"default": false,
+"type": "boolean"
+},
+"setVcserver_url": {
+"default": false,
+"type": "boolean"
+},
+"vcserver_url": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StClusterSecurityInfo": {
+"properties": {
+"securityState": {
+"enum": [
+"NOT_CAPABLE",
+"CAPABLE",
+"ENABLED"
+],
+"type": "string"
+},
+"setSecurityState": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StClusterSummary": {
+"properties": {
+"activeNodes": {
+"type": "string"
+},
+"address": {
+"type": "string"
+},
+"boottime": {
+"format": "int64",
+"type": "integer"
+},
+"clusterAccessPolicy": {
+"enum": [
+"INVALID",
+"STRICT",
+"LENIENT"
+],
+"type": "string"
+},
+"compressionSavings": {
+"format": "double",
+"type": "number"
+},
+"dataReplicationCompliance": {
+"enum": [
+"UNKNOWN",
+"COMPLIANT",
+"NON_COMPLIANT"
+],
+"type": "string"
+},
+"dataReplicationFactor": {
+"enum": [
+"ONE_COPY",
+"TWO_COPIES",
+"THREE_COPIES"
+],
+"type": "string"
+},
+"deduplicationSavings": {
+"format": "double",
+"type": "number"
+},
+"downtime": {
+"type": "string"
+},
+"freeCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"healingInfo": {
+"$ref": "#/definitions/StPlatformClusterHealingInfo"
+},
+"name": {
+"type": "string"
+},
+"resiliencyDetails": {
+"additionalProperties": {
+"type": "string"
+},
+"type": "object"
+},
+"resiliencyDetailsSize": {
+"format": "int32",
+"type": "integer"
+},
+"resiliencyInfo": {
+"$ref": "#/definitions/StPlatformClusterResiliencyInfo"
+},
+"setActiveNodes": {
+"default": false,
+"type": "boolean"
+},
+"setAddress": {
+"default": false,
+"type": "boolean"
+},
+"setBoottime": {
+"default": false,
+"type": "boolean"
+},
+"setClusterAccessPolicy": {
+"default": false,
+"type": "boolean"
+},
+"setCompressionSavings": {
+"default": false,
+"type": "boolean"
+},
+"setDataReplicationCompliance": {
+"default": false,
+"type": "boolean"
+},
+"setDataReplicationFactor": {
+"default": false,
+"type": "boolean"
+},
+"setDeduplicationSavings": {
+"default": false,
+"type": "boolean"
+},
+"setDowntime": {
+"default": false,
+"type": "boolean"
+},
+"setFreeCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setHealingInfo": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setResiliencyDetails": {
+"default": false,
+"type": "boolean"
+},
+"setResiliencyInfo": {
+"default": false,
+"type": "boolean"
+},
+"setSpaceStatus": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setTotalCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setTotalSavings": {
+"default": false,
+"type": "boolean"
+},
+"setUptime": {
+"default": false,
+"type": "boolean"
+},
+"setUsedCapacity": {
+"default": false,
+"type": "boolean"
+},
+"spaceStatus": {
+"type": "string"
+},
+"state": {
+"enum": [
+"UNKNOWN",
+"ONLINE",
+"OFFLINE",
+"DEGRADED",
+"WARNING",
+"FAILED",
+"INPROGRESS",
+"ENOSPACE",
+"READONLY"
+],
+"type": "string"
+},
+"totalCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"totalSavings": {
+"format": "double",
+"type": "number"
+},
+"uptime": {
+"type": "string"
+},
+"usedCapacity": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StClusterVersionDetails": {
+"properties": {
+"clusterUpgradeFailedReason": {
+"type": "string"
+},
+"clusterUpgradeState": {
+"enum": [
+"OK",
+"INPROGRESS",
+"WAITING",
+"FAILED"
+],
+"type": "string"
+},
+"clusterVersion": {
+"type": "string"
+},
+"hypervisorVersion": {
+"type": "string"
+},
+"nodeServiceDetails": {
+"additionalProperties": {
+"$ref": "#/definitions/StNodeServices"
+},
+"type": "object"
+},
+"nodeServiceDetailsSize": {
+"format": "int32",
+"type": "integer"
+},
+"setClusterUpgradeFailedReason": {
+"default": false,
+"type": "boolean"
+},
+"setClusterUpgradeState": {
+"default": false,
+"type": "boolean"
+},
+"setClusterVersion": {
+"default": false,
+"type": "boolean"
+},
+"setHypervisorVersion": {
+"default": false,
+"type": "boolean"
+},
+"setNodeServiceDetails": {
+"default": false,
+"type": "boolean"
+},
+"setUcsmVersion": {
+"default": false,
+"type": "boolean"
+},
+"ucsmVersion": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StCtlVM": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"guestHostname": {
+"type": "string"
+},
+"guestState": {
+"type": "string"
+},
+"ip": {
+"type": "string"
+},
+"mgmtClusterIp": {
+"type": "string"
+},
+"mgmtNetworkIp": {
+"type": "string"
+},
+"moid": {
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"passthrough": {
+"enum": [
+"UNKNOWN",
+"RDM",
+"PCI"
+],
+"type": "string"
+},
+"role": {
+"enum": [
+"UNSPECIFIED",
+"STORAGE",
+"COMPUTE",
+"CACHE",
+"ALL"
+],
+"type": "string"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setGuestHostname": {
+"default": false,
+"type": "boolean"
+},
+"setGuestState": {
+"default": false,
+"type": "boolean"
+},
+"setIp": {
+"default": false,
+"type": "boolean"
+},
+"setMgmtClusterIp": {
+"default": false,
+"type": "boolean"
+},
+"setMgmtNetworkIp": {
+"default": false,
+"type": "boolean"
+},
+"setMoid": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setPassthrough": {
+"default": false,
+"type": "boolean"
+},
+"setRole": {
+"default": false,
+"type": "boolean"
+},
+"setStorageClusterIp": {
+"default": false,
+"type": "boolean"
+},
+"setStorageNetworkIp": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"storageClusterIp": {
+"type": "string"
+},
+"storageNetworkIp": {
+"type": "string"
+},
+"version": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StDatastore": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setStPlatDatastore": {
+"default": false,
+"type": "boolean"
+},
+"setVirtDatastore": {
+"default": false,
+"type": "boolean"
+},
+"stPlatDatastore": {
+"$ref": "#/definitions/StPlatformDatastore"
+},
+"virtDatastore": {
+"$ref": "#/definitions/VirtDatastore"
+}
+},
+"type": "object"
+},
+"StDatastoreConfig": {
+"properties": {
+"capacity": {
+"format": "int64",
+"type": "integer"
+},
+"dataBlockSize": {
+"format": "int32",
+"type": "integer"
+},
+"name": {
+"type": "string"
+},
+"numMirrors": {
+"format": "int32",
+"type": "integer"
+},
+"numStripes": {
+"format": "int32",
+"type": "integer"
+},
+"setCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setDataBlockSize": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setNumMirrors": {
+"default": false,
+"type": "boolean"
+},
+"setNumStripes": {
+"default": false,
+"type": "boolean"
+},
+"setSystemDatastore": {
+"default": false,
+"type": "boolean"
+},
+"systemDatastore": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StDisk": {
+"properties": {
+"blacklistCount": {
+"format": "int32",
+"type": "integer"
+},
+"capacity": {
+"format": "int64",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"lastModifiedTime": {
+"format": "int64",
+"type": "integer"
+},
+"medium": {
+"enum": [
+"UNKNOWN",
+"ROTATIONAL",
+"SOLIDSTATE"
+],
+"type": "string"
+},
+"path": {
+"type": "string"
+},
+"progressPct": {
+"format": "double",
+"type": "number"
+},
+"runtimeState": {
+"enum": [
+"NONE",
+"FORMAT",
+"REPAIR",
+"UNCLAIM",
+"OPEN",
+"SCRUB"
+],
+"type": "string"
+},
+"setBlacklistCount": {
+"default": false,
+"type": "boolean"
+},
+"setCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setLastModifiedTime": {
+"default": false,
+"type": "boolean"
+},
+"setMedium": {
+"default": false,
+"type": "boolean"
+},
+"setPath": {
+"default": false,
+"type": "boolean"
+},
+"setProgressPct": {
+"default": false,
+"type": "boolean"
+},
+"setRuntimeState": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setUsage": {
+"default": false,
+"type": "boolean"
+},
+"setUsedCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"INVALID",
+"READY",
+"UPDATED",
+"DELETED",
+"TIMEOUT",
+"UNPUBLISHED",
+"CLAIMED",
+"AVAILABLE",
+"IGNORED",
+"BLACKLISTED",
+"REPAIRING",
+"UNKNOWN"
+],
+"type": "string"
+},
+"usage": {
+"enum": [
+"UNKNOWN",
+"CACHING",
+"PERSISTENCE"
+],
+"type": "string"
+},
+"usedCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"version": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StException": {
+"properties": {
+"cause": {
+"$ref": "#/definitions/StPlatformException"
+},
+"data": {
+"additionalProperties": {
+"type": "string"
+},
+"type": "object"
+},
+"dataSize": {
+"format": "int32",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"get_DO_NOT_USE_localizedMessage": {
+"type": "string"
+},
+"id": {
+"enum": [
+"UNKNOWN",
+"INTERNAL_ERROR",
+"SYSTEM_ERROR",
+"INVALID_ARGUMENT",
+"NO_CONNECTION",
+"NO_PERMISSION",
+"NOT_IMPLEMENTED",
+"NOT_SUPPORTED",
+"METHOD_NOT_FOUND",
+"NOT_FOUND",
+"DUPLICATE_NAME",
+"MISSING_ARGUMENT",
+"ALREADY_EXISTS",
+"CLUSTER_NOT_CONFIGURED",
+"CLUSTER_ALREADY_CONFIGURED",
+"CLUSTER_INSUFFICIENT_NUMBER_OF_NODES",
+"CLUSTER_CREATION_IN_PROGRESS",
+"CLUSTER_INVALID_STATE",
+"CLUSTER_DRS_DISABLED",
+"CLUSTER_HA_ENABLED",
+"CLUSTER_DRS_DISABLED_AND_HA_ENABLED",
+"CLUSTER_EVENT_WATCHER_FAILED",
+"CLUSTER_NO_MORE_FAILURE_TOLERABLE",
+"VIRTUAL_CENTER_NOT_REGISTERED",
+"HOST_INVALID_STATE",
+"VIRTUAL_CENTER_REGISTRATION_FAILURE",
+"ESX_AGENT_MANAGER_ERROR",
+"VIRTUAL_CENTER_NOT_REACHABLE",
+"VIRTUAL_CENTER_SSO_NOT_REACHABLE",
+"VIRTUAL_CENTER_DATACENTER_NOT_FOUND",
+"VIRTUAL_CENTER_CLUSTER_NOT_FOUND",
+"VIRTUAL_CENTER_HOST_NOT_FOUND",
+"VIRTUAL_CENTER_HOST_DISCONNECTED",
+"VIRTUAL_CENTER_HOST_NOT_IN_CLUSTER",
+"VIRTUAL_CENTER_FOLDER_NOT_FOUND",
+"VIRTUAL_CENTER_RESOURCE_POOL_NOT_FOUND",
+"VIRTUAL_CENTER_NETWORK_NOT_FOUND",
+"NODE_NOT_FOUND",
+"NODE_ALREADY_CONFIGURED",
+"NODE_ADDRESS_IN_USE",
+"NODE_OFFLINE",
+"NODE_UNREACHABLE",
+"NODE_UNKNOWN_HOST",
+"NODE_LOGIN_FAILED",
+"NODE_IN_USE",
+"NODE_MAINTENANCE_MODE_FAILED",
+"NODE_SHUTDOWN_FAILED",
+"NODE_LOGIN_UNINITIALIZED",
+"DATASTORE_NOT_FOUND",
+"DATASTORE_ALREADY_EXISTS",
+"DATASTORE_WITH_SNAPSHOTS",
+"DATASTORE_IN_USE",
+"DATASTORE_MOUNT_FAILED",
+"DATASTORE_UNMOUNT_FAILED",
+"DATASTORE_DUPLICATE_NAME",
+"DATASTORE_INACCESSIBLE",
+"DATASTORE_NATIVE_SNAP_CLONE_SUPPORT",
+"DISK_NOT_FOUND",
+"DISK_ALREADY_EXISTS",
+"DISK_IN_USE",
+"VM_CLONE_ERROR",
+"VM_SNAPSHOT_ERROR",
+"VM_NON_NATIVE_SNAPSHOT_EXISTS",
+"VM_WITH_PENDING_QUESTION",
+"VM_HARDWARE_VERSION_NOT_SUPPORTED",
+"VM_CRASH_CONSISTENT_RESUME_TIMED_OUT",
+"VM_APP_CONSISTENT_RESUME_TIMED_OUT",
+"VM_NOT_FOUND_ON_HOST",
+"STORFS_OUT_OF_SPACE",
+"STORFS_OUT_OF_BOUNDS",
+"STORFS_PRIMARY_NODE_NOT_FOUND",
+"STORFS_PREPARE_SHUTDOWN_TIMEOUT",
+"STORFS_SPACE_WARNING",
+"SCVMCLIENT_START_FAILED",
+"SCVMCLIENT_STOP_FAILED",
+"CLEANER_IN_PROGRESS",
+"STORFS_NODE_NOT_CLUSTER_READY",
+"UPGRADE_ERROR",
+"DOWNLOAD_ERROR",
+"DOWNGRADE_ERROR",
+"VERSION_INCOMPATIBLE",
+"UPGRADE_NOT_FOUND",
+"UPGRADE_IN_PROGRESS",
+"FILE_CHECKSUM_MISMATCH",
+"NODE_IN_MAINTENANCE_MODE",
+"UPGRADE_VALIDATION_ERROR",
+"UPGRADE_NOT_SUPPORTED",
+"NODE_INCOMPATIBLE",
+"NODE_MISCONFIGURED_HOSTNAME",
+"NODE_MISCONFIGURED_NTPSERVER",
+"NODE_MISCONFIGURED_NETWORK",
+"NODE_MISCONFIGURED_DNSSERVER",
+"NODE_MISCONFIGURED_OTHER",
+"NODE_MISCONFIGURED_SSH",
+"DEPLOYMENT_IN_PROGRESS",
+"HW_BOM_CHECK_FAILURE",
+"HW_BOM_CHECK_WARNING",
+"IP_UNREACHABLE",
+"IP_INVALID",
+"PORT_UNREACHABLE",
+"AUTHENTICATION_FAILURE",
+"CLUSTER_PAIR_DR_VERSION_ERROR",
+"CLUSTER_PAIR_COMPATIBILITY_CHECK_FAILS",
+"CLUSTER_PAIR_CLUSTER_UNAVAILABLE",
+"CLUSTER_PAIR_FAIL",
+"CLUSTER_PAIR_RETRY",
+"CLUSTER_PAIR_NOT_FOUND",
+"CLUSTER_PAIR_PAIRING_INCOMPLETE",
+"CLUSTER_PAIR_ONE_TO_MANY_DATASTORE_PAIR",
+"CLUSTER_PAIR_INVALID_DATASTORE_PAIR",
+"CLUSTER_PAIR_INVALID_DATASTORE_PAIR_OPERATION",
+"CLUSTER_PAIR_DATASTORE_PAIR_FAIL",
+"DR_VMXPATH_NOT_FOUND",
+"DR_NOT_IMPLEMENTED",
+"DR_NOT_VALID_STATE",
+"DR_ALREADY_EXISTS",
+"VM_REPL_OP_FAILED",
+"VM_REPL_OP_RETRY",
+"VM_REPL_OP_RESULT_UNKNOWN",
+"VM_REPL_OP_INVALID_ACTION",
+"VM_REPL_JOB_FAILED",
+"VM_REPL_JOB_ALREADY_EXISTS",
+"VM_REPL_JOB_NOT_FOUND",
+"VM_REPL_JOB_METADATA_NOT_FOUND",
+"VM_REPL_JOB_INVALID_STATE_TRANSITION",
+"VM_REPL_SNAPSHOT_ALREADY_REPLICATED",
+"VM_REPL_SNAPSHOT_PARENT_NOT_REPLICATED",
+"DATA_SVC_ST_MGR_NOT_READY",
+"DP_REPL_NETWORK_CONFIG_FAILED",
+"DP_REPL_CONFIG_UPDATE_INVENTORY_FAILED",
+"DP_REPL_CONFIG_FETCH_INVENTORY_FAILED",
+"IP_POOL_OBJECT_NOT_FOUND",
+"IP_POOL_OBJECT_UPDATE_INVENTORY_FAILED",
+"IP_POOL_ADD_NEW_RANGE_TO_EXISTING_POOL_FAILED",
+"IP_POOL_FETCH_FREE_IPS_FAILED",
+"IP_POOL_FETCH_NETMASK_FAILED",
+"SED_CMD_EXEC_ERROR",
+"VM_ALREADY_PROTECTED",
+"VM_SNAPSHOT_NOT_REPLICATED",
+"INVENTORY_FAIL",
+"INVENTORY_CONFIG_MISMATCH",
+"INVENTORY_ALREADY_EXISTS",
+"INVENTORY_NOT_FOUND"
+],
+"type": "string"
+},
+"lcMessage": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"localizedMessage": {
+"type": "string"
+},
+"message": {
+"type": "string"
+},
+"setCause": {
+"default": false,
+"type": "boolean"
+},
+"setData": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setId": {
+"default": false,
+"type": "boolean"
+},
+"setLcMessage": {
+"default": false,
+"type": "boolean"
+},
+"setMessage": {
+"default": false,
+"type": "boolean"
+},
+"setSeverity": {
+"default": false,
+"type": "boolean"
+},
+"set_DO_NOT_USE_localizedMessage": {
+"default": false,
+"type": "boolean"
+},
+"severity": {
+"enum": [
+"WARNING",
+"ERROR",
+"INFO"
+],
+"type": "string"
+},
+"stackTrace": {
+"items": {
+"$ref": "#/definitions/StackTraceElement"
+},
+"type": "array"
+},
+"suppressed": {
+"items": {
+"$ref": "#/definitions/Throwable"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"StJob": {
+"properties": {
+"description": {
+"type": "string"
+},
+"is_cancel_requested": {
+"default": false,
+"type": "boolean"
+},
+"is_canceled": {
+"default": false,
+"type": "boolean"
+},
+"job_steps": {
+"additionalProperties": {
+"items": {
+"$ref": "#/definitions/Step"
+},
+"type": "array"
+},
+"type": "object"
+},
+"job_stepsSize": {
+"format": "int32",
+"type": "integer"
+},
+"jobid": {
+"type": "string"
+},
+"lcDescription": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"lcMessage": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"lifetime_after_exit_millis": {
+"format": "int64",
+"type": "integer"
+},
+"message": {
+"type": "string"
+},
+"method_name": {
+"type": "string"
+},
+"out_parameters": {
+"additionalProperties": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"type": "object"
+},
+"out_parametersSize": {
+"format": "int32",
+"type": "integer"
+},
+"owner": {
+"type": "string"
+},
+"percent_complete": {
+"format": "int32",
+"type": "integer"
+},
+"setDescription": {
+"default": false,
+"type": "boolean"
+},
+"setIs_cancel_requested": {
+"default": false,
+"type": "boolean"
+},
+"setIs_canceled": {
+"default": false,
+"type": "boolean"
+},
+"setJob_steps": {
+"default": false,
+"type": "boolean"
+},
+"setJobid": {
+"default": false,
+"type": "boolean"
+},
+"setLcDescription": {
+"default": false,
+"type": "boolean"
+},
+"setLcMessage": {
+"default": false,
+"type": "boolean"
+},
+"setLifetime_after_exit_millis": {
+"default": false,
+"type": "boolean"
+},
+"setMessage": {
+"default": false,
+"type": "boolean"
+},
+"setMethod_name": {
+"default": false,
+"type": "boolean"
+},
+"setOut_parameters": {
+"default": false,
+"type": "boolean"
+},
+"setOwner": {
+"default": false,
+"type": "boolean"
+},
+"setPercent_complete": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setSummary_step_state": {
+"default": false,
+"type": "boolean"
+},
+"setSuspend_on_exit": {
+"default": false,
+"type": "boolean"
+},
+"setTag": {
+"default": false,
+"type": "boolean"
+},
+"setTime_elapsed_millis": {
+"default": false,
+"type": "boolean"
+},
+"setTime_started_millis": {
+"default": false,
+"type": "boolean"
+},
+"setTime_submitted_millis": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"NEW",
+"STARTING",
+"RUNNING",
+"SUSPENDED",
+"SHUTTING_DOWN",
+"COMPLETED",
+"TERMINATED",
+"CANCELLED",
+"EXCEPTION",
+"STALLED"
+],
+"type": "string"
+},
+"summary_step_state": {
+"enum": [
+"NOTSTARTED",
+"INPROGRESS",
+"SUCCEEDED",
+"FAILED"
+],
+"type": "string"
+},
+"suspend_on_exit": {
+"default": false,
+"type": "boolean"
+},
+"tag": {
+"type": "string"
+},
+"time_elapsed_millis": {
+"format": "int64",
+"type": "integer"
+},
+"time_started_millis": {
+"format": "int64",
+"type": "integer"
+},
+"time_submitted_millis": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StNetworkSettings": {
+"properties": {
+"dnsSearch": {
+"items": {
+"type": "string"
+},
+"type": "array",
+"uniqueItems": true
+},
+"dnsSearchIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"dnsSearchSize": {
+"format": "int32",
+"type": "integer"
+},
+"dnsServers": {
+"items": {
+"type": "string"
+},
+"type": "array",
+"uniqueItems": true
+},
+"dnsServersIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"dnsServersSize": {
+"format": "int32",
+"type": "integer"
+},
+"enableAutoSupport": {
+"default": false,
+"type": "boolean"
+},
+"fromAddress": {
+"type": "string"
+},
+"nodeIPSettings": {
+"additionalProperties": {
+"items": {
+"$ref": "#/definitions/IpSettings"
+},
+"type": "array"
+},
+"type": "object"
+},
+"nodeIPSettingsSize": {
+"format": "int32",
+"type": "integer"
+},
+"ntpServers": {
+"items": {
+"type": "string"
+},
+"type": "array",
+"uniqueItems": true
+},
+"ntpServersIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"ntpServersSize": {
+"format": "int32",
+"type": "integer"
+},
+"recipientAddress": {
+"items": {
+"type": "string"
+},
+"type": "array",
+"uniqueItems": true
+},
+"recipientAddressIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"recipientAddressSize": {
+"format": "int32",
+"type": "integer"
+},
+"setDnsSearch": {
+"default": false,
+"type": "boolean"
+},
+"setDnsServers": {
+"default": false,
+"type": "boolean"
+},
+"setEnableAutoSupport": {
+"default": false,
+"type": "boolean"
+},
+"setFromAddress": {
+"default": false,
+"type": "boolean"
+},
+"setNodeIPSettings": {
+"default": false,
+"type": "boolean"
+},
+"setNtpServers": {
+"default": false,
+"type": "boolean"
+},
+"setRecipientAddress": {
+"default": false,
+"type": "boolean"
+},
+"setSmtpServer": {
+"default": false,
+"type": "boolean"
+},
+"setTimezone": {
+"default": false,
+"type": "boolean"
+},
+"setVNetworkData": {
+"default": false,
+"type": "boolean"
+},
+"setVNetworkMgmt": {
+"default": false,
+"type": "boolean"
+},
+"setVNetworkVM": {
+"default": false,
+"type": "boolean"
+},
+"setVNetworkVMotion": {
+"default": false,
+"type": "boolean"
+},
+"setVNetworkiSCSI": {
+"default": false,
+"type": "boolean"
+},
+"smtpServer": {
+"type": "string"
+},
+"timezone": {
+"type": "string"
+},
+"vNetworkData": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vNetworkMgmt": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vNetworkVM": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vNetworkVMotion": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vNetworkiSCSI": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vnetworkData": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vnetworkMgmt": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vnetworkVM": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vnetworkVMotion": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+},
+"vnetworkiSCSI": {
+"$ref": "#/definitions/StVirtualNetworkSetting"
+}
+},
+"type": "object"
+},
+"StNode": {
+"properties": {
+"clusterRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"fwVersion": {
+"type": "string"
+},
+"host": {
+"$ref": "#/definitions/VirtNode"
+},
+"opInfo": {
+"$ref": "#/definitions/StOperationInfo"
+},
+"pNode": {
+"$ref": "#/definitions/StPlatformNode"
+},
+"pnode": {
+"$ref": "#/definitions/StPlatformNode"
+},
+"progress": {
+"items": {
+"$ref": "#/definitions/Step"
+},
+"type": "array"
+},
+"progressIterator": {
+"$ref": "#/definitions/IteratorStep"
+},
+"progressSize": {
+"format": "int32",
+"type": "integer"
+},
+"setClusterRef": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setFwVersion": {
+"default": false,
+"type": "boolean"
+},
+"setHost": {
+"default": false,
+"type": "boolean"
+},
+"setOpInfo": {
+"default": false,
+"type": "boolean"
+},
+"setPNode": {
+"default": false,
+"type": "boolean"
+},
+"setProgress": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setStorfsIp": {
+"default": false,
+"type": "boolean"
+},
+"setUpgradeState": {
+"default": false,
+"type": "boolean"
+},
+"setUpgradeVersion": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"ONLINE",
+"OFFLINE",
+"INMAINTENANCE",
+"INPROGRESS"
+],
+"type": "string"
+},
+"storfsIp": {
+"$ref": "#/definitions/IpSettings"
+},
+"upgradeState": {
+"enum": [
+"OK",
+"INPROGRESS",
+"WAITING",
+"FAILED"
+],
+"type": "string"
+},
+"upgradeVersion": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StNodeServices": {
+"properties": {
+"StServices": {
+"additionalProperties": {
+"$ref": "#/definitions/StServiceDetails"
+},
+"type": "object"
+},
+"reason": {
+"type": "string"
+},
+"setReason": {
+"default": false,
+"type": "boolean"
+},
+"setStServices": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"stServices": {
+"additionalProperties": {
+"$ref": "#/definitions/StServiceDetails"
+},
+"type": "object"
+},
+"stServicesSize": {
+"format": "int32",
+"type": "integer"
+},
+"state": {
+"enum": [
+"OK",
+"INPROGRESS",
+"WAITING",
+"FAILED"
+],
+"type": "string"
+},
+"version": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StOperationInfo": {
+"properties": {
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"NONE",
+"ADDING",
+"REMOVING",
+"MODIFYING",
+"ACCESSING"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StPlatformCleanerSchedule": {
+"properties": {
+"endTime": {
+"format": "int32",
+"type": "integer"
+},
+"policyActive": {
+"type": "boolean"
+},
+"startTime": {
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StPlatformCluster": {
+"properties": {
+"activeNodes": {
+"format": "int32",
+"type": "integer"
+},
+"allFlash": {
+"default": false,
+"type": "boolean"
+},
+"boottime": {
+"format": "int64",
+"type": "integer"
+},
+"capacity": {
+"format": "int64",
+"type": "integer"
+},
+"compliance": {
+"enum": [
+"UNKNOWN",
+"COMPLIANT",
+"NON_COMPLIANT"
+],
+"type": "string"
+},
+"config": {
+"$ref": "#/definitions/StPlatformClusterConfig"
+},
+"downtime": {
+"format": "int64",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"freeCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"healingInfo": {
+"$ref": "#/definitions/StPlatformClusterHealingInfo"
+},
+"healthState": {
+"enum": [
+"UNKNOWN",
+"HEALTHY",
+"AVERAGE",
+"MARGINAL",
+"CRITICAL",
+"UNHEALTHY"
+],
+"type": "string"
+},
+"nodes": {
+"items": {
+"$ref": "#/definitions/EntityRef"
+},
+"type": "array",
+"uniqueItems": true
+},
+"nodesIterator": {
+"$ref": "#/definitions/IteratorEntityRef"
+},
+"nodesSize": {
+"format": "int32",
+"type": "integer"
+},
+"rawCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"resiliencyDetails": {
+"additionalProperties": {
+"type": "string"
+},
+"type": "object"
+},
+"resiliencyDetailsSize": {
+"format": "int32",
+"type": "integer"
+},
+"resiliencyInfo": {
+"$ref": "#/definitions/StPlatformClusterResiliencyInfo"
+},
+"setActiveNodes": {
+"default": false,
+"type": "boolean"
+},
+"setAllFlash": {
+"default": false,
+"type": "boolean"
+},
+"setBoottime": {
+"default": false,
+"type": "boolean"
+},
+"setCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setCompliance": {
+"default": false,
+"type": "boolean"
+},
+"setConfig": {
+"default": false,
+"type": "boolean"
+},
+"setDowntime": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setFreeCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setHealingInfo": {
+"default": false,
+"type": "boolean"
+},
+"setHealthState": {
+"default": false,
+"type": "boolean"
+},
+"setNodes": {
+"default": false,
+"type": "boolean"
+},
+"setRawCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setResiliencyDetails": {
+"default": false,
+"type": "boolean"
+},
+"setResiliencyInfo": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setUptime": {
+"default": false,
+"type": "boolean"
+},
+"setUsedCapacity": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"UNKNOWN",
+"ONLINE",
+"OFFLINE",
+"DEGRADED",
+"WARNING",
+"FAILED",
+"INPROGRESS",
+"ENOSPACE",
+"READONLY"
+],
+"type": "string"
+},
+"uptime": {
+"format": "int64",
+"type": "integer"
+},
+"usedCapacity": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StPlatformClusterConfig": {
+"properties": {
+"clusterAccessPolicy": {
+"enum": [
+"INVALID",
+"STRICT",
+"LENIENT"
+],
+"type": "string"
+},
+"clusterUuid": {
+"type": "string"
+},
+"dataReplicationFactor": {
+"enum": [
+"ONE_COPY",
+"TWO_COPIES",
+"THREE_COPIES"
+],
+"type": "string"
+},
+"ip": {
+"type": "string"
+},
+"setClusterAccessPolicy": {
+"default": false,
+"type": "boolean"
+},
+"setClusterUuid": {
+"default": false,
+"type": "boolean"
+},
+"setDataReplicationFactor": {
+"default": false,
+"type": "boolean"
+},
+"setIp": {
+"default": false,
+"type": "boolean"
+},
+"setSize": {
+"default": false,
+"type": "boolean"
+},
+"setWorkloadType": {
+"default": false,
+"type": "boolean"
+},
+"size": {
+"format": "int32",
+"type": "integer"
+},
+"workloadType": {
+"enum": [
+"AUTO_RESERVED",
+"VDI",
+"VSI"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StPlatformClusterHealingInfo": {
+"properties": {
+"estimatedCompletionTimeInSeconds": {
+"format": "int64",
+"type": "integer"
+},
+"inProgress": {
+"default": false,
+"type": "boolean"
+},
+"messages": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"messagesIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"messagesSize": {
+"format": "int32",
+"type": "integer"
+},
+"percentComplete": {
+"format": "int32",
+"type": "integer"
+},
+"setEstimatedCompletionTimeInSeconds": {
+"default": false,
+"type": "boolean"
+},
+"setInProgress": {
+"default": false,
+"type": "boolean"
+},
+"setMessages": {
+"default": false,
+"type": "boolean"
+},
+"setPercentComplete": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StPlatformClusterResiliencyInfo": {
+"properties": {
+"hddFailuresTolerable": {
+"format": "int32",
+"type": "integer"
+},
+"messages": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"messagesIterator": {
+"$ref": "#/definitions/IteratorString"
+},
+"messagesSize": {
+"format": "int32",
+"type": "integer"
+},
+"nodeFailuresTolerable": {
+"format": "int32",
+"type": "integer"
+},
+"setHddFailuresTolerable": {
+"default": false,
+"type": "boolean"
+},
+"setMessages": {
+"default": false,
+"type": "boolean"
+},
+"setNodeFailuresTolerable": {
+"default": false,
+"type": "boolean"
+},
+"setSsdFailuresTolerable": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"ssdFailuresTolerable": {
+"format": "int32",
+"type": "integer"
+},
+"state": {
+"enum": [
+"UNKNOWN",
+"HEALTHY",
+"WARNING"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StPlatformDatastore": {
+"properties": {
+"config": {
+"$ref": "#/definitions/StPlatformDatastoreConfig"
+},
+"creationTime": {
+"format": "int64",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"freeCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"lastAccessTime": {
+"format": "int64",
+"type": "integer"
+},
+"lastModifiedTime": {
+"format": "int64",
+"type": "integer"
+},
+"parent": {
+"$ref": "#/definitions/EntityRef"
+},
+"setConfig": {
+"default": false,
+"type": "boolean"
+},
+"setCreationTime": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setFreeCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setLastAccessTime": {
+"default": false,
+"type": "boolean"
+},
+"setLastModifiedTime": {
+"default": false,
+"type": "boolean"
+},
+"setParent": {
+"default": false,
+"type": "boolean"
+},
+"setTotalCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setUnCompressedUsedBytes": {
+"default": false,
+"type": "boolean"
+},
+"setUnsharedUsedBytes": {
+"default": false,
+"type": "boolean"
+},
+"totalCapacity": {
+"format": "int64",
+"type": "integer"
+},
+"unCompressedUsedBytes": {
+"format": "int64",
+"type": "integer"
+},
+"unsharedUsedBytes": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StPlatformDatastoreConfig": {
+"properties": {
+"capacity": {
+"format": "int64",
+"type": "integer"
+},
+"dataBlockSize": {
+"format": "int32",
+"type": "integer"
+},
+"name": {
+"type": "string"
+},
+"numMirrors": {
+"format": "int32",
+"type": "integer"
+},
+"numStripes": {
+"format": "int32",
+"type": "integer"
+},
+"setCapacity": {
+"default": false,
+"type": "boolean"
+},
+"setDataBlockSize": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setNumMirrors": {
+"default": false,
+"type": "boolean"
+},
+"setNumStripes": {
+"default": false,
+"type": "boolean"
+},
+"setSystemDatastore": {
+"default": false,
+"type": "boolean"
+},
+"systemDatastore": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StPlatformEnospaceInfo": {
+"properties": {
+"bytesReclaimable": {
+"format": "int64",
+"type": "integer"
+},
+"bytesToClear": {
+"format": "int64",
+"type": "integer"
+},
+"bytesToResume": {
+"format": "int64",
+"type": "integer"
+},
+"cleanerInProgress": {
+"default": false,
+"type": "boolean"
+},
+"diskEnospc": {
+"default": false,
+"type": "boolean"
+},
+"flusherInProgress": {
+"default": false,
+"type": "boolean"
+},
+"freeBytes": {
+"format": "int64",
+"type": "integer"
+},
+"rebalanceInProgress": {
+"default": false,
+"type": "boolean"
+},
+"setBytesReclaimable": {
+"default": false,
+"type": "boolean"
+},
+"setBytesToClear": {
+"default": false,
+"type": "boolean"
+},
+"setBytesToResume": {
+"default": false,
+"type": "boolean"
+},
+"setCleanerInProgress": {
+"default": false,
+"type": "boolean"
+},
+"setDiskEnospc": {
+"default": false,
+"type": "boolean"
+},
+"setFlusherInProgress": {
+"default": false,
+"type": "boolean"
+},
+"setFreeBytes": {
+"default": false,
+"type": "boolean"
+},
+"setRebalanceInProgress": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"CLUSTER_ENOSPACE_NONE",
+"CLUSTER_ENOSPACE_SET",
+"CLUSTER_ENOSPACE_WARN",
+"CLUSTER_ENOSPACE_ALERT",
+"CLUSTER_ENOSPACE_CLEAR"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StPlatformException": {
+"properties": {
+"cause": {
+"$ref": "#/definitions/Throwable"
+},
+"data": {
+"additionalProperties": {
+"type": "string"
+},
+"type": "object"
+},
+"dataSize": {
+"format": "int32",
+"type": "integer"
+},
+"error": {
+"format": "int32",
+"type": "integer"
+},
+"localizedMessage": {
+"type": "string"
+},
+"message": {
+"type": "string"
+},
+"setData": {
+"default": false,
+"type": "boolean"
+},
+"setError": {
+"default": false,
+"type": "boolean"
+},
+"setMessage": {
+"default": false,
+"type": "boolean"
+},
+"setType": {
+"default": false,
+"type": "boolean"
+},
+"stackTrace": {
+"items": {
+"$ref": "#/definitions/StackTraceElement"
+},
+"type": "array"
+},
+"suppressed": {
+"items": {
+"$ref": "#/definitions/Throwable"
+},
+"type": "array"
+},
+"type": {
+"enum": [
+"UNKNOWN",
+"INVALID_OPERATION",
+"CLUSTER",
+"STFS",
+"CLEANER",
+"NODE_MANAGER",
+"PLATFORM",
+"DATASTORE",
+"INVENTORY",
+"SERVER",
+"REBALANCE",
+"ENOSPACE",
+"REPLICATION"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StPlatformNode": {
+"properties": {
+"about": {
+"$ref": "#/definitions/AboutInfo"
+},
+"bootTime": {
+"format": "int64",
+"type": "integer"
+},
+"compression": {
+"default": false,
+"type": "boolean"
+},
+"dataWriteThruEnabled": {
+"default": false,
+"type": "boolean"
+},
+"dedup": {
+"default": false,
+"type": "boolean"
+},
+"disks": {
+"items": {
+"$ref": "#/definitions/StDisk"
+},
+"type": "array",
+"uniqueItems": true
+},
+"disksIterator": {
+"$ref": "#/definitions/IteratorStDisk"
+},
+"disksSize": {
+"format": "int32",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"ip": {
+"type": "string"
+},
+"lastModifiedTime": {
+"format": "int64",
+"type": "integer"
+},
+"master": {
+"default": false,
+"type": "boolean"
+},
+"name": {
+"type": "string"
+},
+"nsPrimary": {
+"default": false,
+"type": "boolean"
+},
+"retired": {
+"default": false,
+"type": "boolean"
+},
+"setAbout": {
+"default": false,
+"type": "boolean"
+},
+"setBootTime": {
+"default": false,
+"type": "boolean"
+},
+"setCompression": {
+"default": false,
+"type": "boolean"
+},
+"setDataWriteThruEnabled": {
+"default": false,
+"type": "boolean"
+},
+"setDedup": {
+"default": false,
+"type": "boolean"
+},
+"setDisks": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setIp": {
+"default": false,
+"type": "boolean"
+},
+"setLastModifiedTime": {
+"default": false,
+"type": "boolean"
+},
+"setMaster": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setNsPrimary": {
+"default": false,
+"type": "boolean"
+},
+"setRetired": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"INVALID",
+"READY",
+"UNPUBLISHED",
+"DELETED",
+"BLACKLISTED",
+"WHITELISTED",
+"INMAINTENANCE"
+],
+"type": "string"
+},
+"version": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StPlatformRebalanceStatus": {
+"properties": {
+"percentComplete": {
+"format": "int32",
+"type": "integer"
+},
+"rebalanceState": {
+"enum": [
+"CLUSTER_REBALANCE_NOT_RUNNING",
+"CLUSTER_REBALANCE_ONGOING",
+"CLUSTER_REBALANCE_NOT_MASTER",
+"CLUSTER_REBALANCE_NOT_SUPPORTED",
+"CLUSTER_REBALANCE_FAILED"
+],
+"type": "string"
+},
+"setPercentComplete": {
+"default": false,
+"type": "boolean"
+},
+"setRebalanceState": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"StPortGroupSettings": {
+"properties": {
+"name": {
+"type": "string"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setType": {
+"default": false,
+"type": "boolean"
+},
+"setVlanId": {
+"default": false,
+"type": "boolean"
+},
+"type": {
+"enum": [
+"VMKERNEL",
+"VM"
+],
+"type": "string"
+},
+"vlanId": {
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"StSMTPConfiguration": {
+"properties": {
+"fromAddress": {
+"type": "string"
+},
+"setFromAddress": {
+"default": false,
+"type": "boolean"
+},
+"setSmtpServer": {
+"default": false,
+"type": "boolean"
+},
+"smtpServer": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StServiceDetails": {
+"properties": {
+"message": {
+"type": "string"
+},
+"setMessage": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setVersion": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"type": "string"
+},
+"version": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StSnapshotPoint": {
+"properties": {
+"replicationSource": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StVirtualNetworkSetting": {
+"properties": {
+"controllerPortGroupName": {
+"type": "string"
+},
+"hypervisorPortGroupName": {
+"type": "string"
+},
+"isVDSConfiguration": {
+"default": false,
+"type": "boolean"
+},
+"pNic": {
+"type": "string"
+},
+"pnic": {
+"type": "string"
+},
+"portGroupSettings": {
+"items": {
+"$ref": "#/definitions/StPortGroupSettings"
+},
+"type": "array"
+},
+"portGroupSettingsIterator": {
+"$ref": "#/definitions/IteratorStPortGroupSettings"
+},
+"portGroupSettingsSize": {
+"format": "int32",
+"type": "integer"
+},
+"setControllerPortGroupName": {
+"default": false,
+"type": "boolean"
+},
+"setHypervisorPortGroupName": {
+"default": false,
+"type": "boolean"
+},
+"setIsVDSConfiguration": {
+"default": false,
+"type": "boolean"
+},
+"setPNic": {
+"default": false,
+"type": "boolean"
+},
+"setPortGroupSettings": {
+"default": false,
+"type": "boolean"
+},
+"setStService": {
+"default": false,
+"type": "boolean"
+},
+"setVSwitch": {
+"default": false,
+"type": "boolean"
+},
+"setVlanId": {
+"default": false,
+"type": "boolean"
+},
+"stService": {
+"enum": [
+"STCTL",
+"ZK",
+"HYPERVISOR",
+"IPMI",
+"MGMT",
+"CLUSTER",
+"VMOTION",
+"STCTL_MGMT",
+"VM",
+"REPLICATION"
+],
+"type": "string"
+},
+"vSwitch": {
+"type": "string"
+},
+"vlanId": {
+"format": "int32",
+"type": "integer"
+},
+"vswitch": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"StVmIncomingSnapshot": {
+"properties": {
+"replicationSource": {
+"$ref": "#/definitions/EntityRef"
+},
+"snapShots": {
+"items": {
+"$ref": "#/definitions/StSnapshotPoint"
+},
+"type": "array"
+},
+"srcVmName": {
+"type": "string"
+},
+"srcVmUuid": {
+"type": "string"
+},
+"srcVmxPath": {
+"format": "date-time",
+"type": "string"
+},
+"status": {
+"items": {
+"$ref": "#/definitions/StException"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"StackTraceElement": {
+"properties": {
+"className": {
+"type": "string"
+},
+"fileName": {
+"type": "string"
+},
+"lineNumber": {
+"format": "int32",
+"type": "integer"
+},
+"methodName": {
+"type": "string"
+},
+"nativeMethod": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"Step": {
+"properties": {
+"completion": {
+"format": "int32",
+"type": "integer"
+},
+"description": {
+"type": "string"
+},
+"entity": {
+"$ref": "#/definitions/EntityRef"
+},
+"fault": {
+"$ref": "#/definitions/StException"
+},
+"isValidation": {
+"default": false,
+"type": "boolean"
+},
+"lcDescription": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"name": {
+"type": "string"
+},
+"parent": {
+"$ref": "#/definitions/EntityRef"
+},
+"setCompletion": {
+"default": false,
+"type": "boolean"
+},
+"setDescription": {
+"default": false,
+"type": "boolean"
+},
+"setEntity": {
+"default": false,
+"type": "boolean"
+},
+"setFault": {
+"default": false,
+"type": "boolean"
+},
+"setIsValidation": {
+"default": false,
+"type": "boolean"
+},
+"setLcDescription": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setParent": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"NOTSTARTED",
+"INPROGRESS",
+"SUCCEEDED",
+"FAILED"
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"StringStringPair": {
+"properties": {
+"first": {
+"type": "string"
+},
+"second": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"TaskInfo": {
+"properties": {
+"cancelable": {
+"default": false,
+"type": "boolean"
+},
+"cancelled": {
+"default": false,
+"type": "boolean"
+},
+"changeTag": {
+"type": "string"
+},
+"completeTime": {
+"format": "date-time",
+"type": "string"
+},
+"description": {
+"$ref": "#/definitions/LocalizableMessage"
+},
+"descriptionId": {
+"type": "string"
+},
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"entity": {
+"$ref": "#/definitions/ManagedObjectReference"
+},
+"entityName": {
+"type": "string"
+},
+"error": {
+"$ref": "#/definitions/LocalizedMethodFault"
+},
+"eventChainId": {
+"format": "int32",
+"type": "integer"
+},
+"key": {
+"type": "string"
+},
+"locked": {
+"items": {
+"$ref": "#/definitions/ManagedObjectReference"
+},
+"type": "array"
+},
+"name": {
+"type": "string"
+},
+"parentTaskKey": {
+"type": "string"
+},
+"progress": {
+"format": "int32",
+"type": "integer"
+},
+"queueTime": {
+"format": "date-time",
+"type": "string"
+},
+"reason": {
+"$ref": "#/definitions/TaskReason"
+},
+"result": {
+"type": "object"
+},
+"rootTaskKey": {
+"type": "string"
+},
+"startTime": {
+"format": "date-time",
+"type": "string"
+},
+"state": {
+"enum": [
+"queued",
+"running",
+"success",
+"error"
+],
+"type": "string"
+},
+"task": {
+"$ref": "#/definitions/ManagedObjectReference"
+}
+},
+"type": "object"
+},
+"TaskReason": {
+"properties": {
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"Throwable": {
+"properties": {
+"cause": {
+"$ref": "#/definitions/Throwable"
+},
+"localizedMessage": {
+"type": "string"
+},
+"message": {
+"type": "string"
+},
+"stackTrace": {
+"items": {
+"$ref": "#/definitions/StackTraceElement"
+},
+"type": "array"
+},
+"suppressed": {
+"items": {
+"$ref": "#/definitions/Throwable"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"Time": {
+"properties": {
+"time": {
+"format": "date-time",
+"type": "string"
+},
+"timeZone": {
+"type": "string"
+},
+"unixTime": {
+"format": "int64",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"UserContext": {
+"properties": {
+"authorization": {
+"type": "string"
+},
+"username": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"VMCloneStatus": {
+"properties": {
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"stException": {
+"$ref": "#/definitions/StException"
+}
+},
+"type": "object"
+},
+"VcServer": {
+"properties": {
+"address": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"VersionAndState": {
+"properties": {
+"isCurrent": {
+"type": "boolean"
+},
+"setState": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"VirtCluster": {
+"properties": {
+"boottime": {
+"format": "int64",
+"type": "integer"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"setBoottime": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setVirtDatastores": {
+"default": false,
+"type": "boolean"
+},
+"setVirtNodes": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"UNKNOWN",
+"ONLINE",
+"OFFLINE",
+"DEGRADED",
+"WARNING",
+"FAILED",
+"INPROGRESS",
+"ENOSPACE",
+"READONLY"
+],
+"type": "string"
+},
+"virtDatastores": {
+"items": {
+"$ref": "#/definitions/EntityRef"
+},
+"type": "array",
+"uniqueItems": true
+},
+"virtDatastoresIterator": {
+"$ref": "#/definitions/IteratorEntityRef"
+},
+"virtDatastoresSize": {
+"format": "int32",
+"type": "integer"
+},
+"virtNodes": {
+"items": {
+"$ref": "#/definitions/EntityRef"
+},
+"type": "array",
+"uniqueItems": true
+},
+"virtNodesIterator": {
+"$ref": "#/definitions/IteratorEntityRef"
+},
+"virtNodesSize": {
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"VirtClusterConfig": {
+"properties": {
+"drsEnabled": {
+"default": false,
+"type": "boolean"
+},
+"haEnabled": {
+"default": false,
+"type": "boolean"
+},
+"setDrsEnabled": {
+"default": false,
+"type": "boolean"
+},
+"setHaEnabled": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"VirtDatastore": {
+"properties": {
+"accessibilitySummary": {
+"enum": [
+"ACCESSIBLE",
+"NOT_ACCESSIBLE",
+"PARTIALLY_ACCESSIBLE"
+],
+"type": "string"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"mor": {
+"type": "string"
+},
+"mountSummary": {
+"enum": [
+"MOUNTED",
+"UNMOUNTED",
+"MOUNT_FAILURE",
+"UNMOUNT_FAILURE"
+],
+"type": "string"
+},
+"setAccessibilitySummary": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setMor": {
+"default": false,
+"type": "boolean"
+},
+"setMountSummary": {
+"default": false,
+"type": "boolean"
+},
+"setStatus": {
+"default": false,
+"type": "boolean"
+},
+"setUrl": {
+"default": false,
+"type": "boolean"
+},
+"status": {
+"additionalProperties": {
+"$ref": "#/definitions/VirtMountpointStatus"
+},
+"type": "object"
+},
+"statusSize": {
+"format": "int32",
+"type": "integer"
+},
+"url": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"VirtMountpointStatus": {
+"properties": {
+"accessible": {
+"default": false,
+"type": "boolean"
+},
+"mounted": {
+"default": false,
+"type": "boolean"
+},
+"reasonInaccessible": {
+"type": "string"
+},
+"setAccessible": {
+"default": false,
+"type": "boolean"
+},
+"setMounted": {
+"default": false,
+"type": "boolean"
+},
+"setReasonInaccessible": {
+"default": false,
+"type": "boolean"
+}
+},
+"type": "object"
+},
+"VirtNode": {
+"properties": {
+"about": {
+"$ref": "#/definitions/AboutInfo"
+},
+"bootTime": {
+"format": "int64",
+"type": "integer"
+},
+"enclosureSerialNumber": {
+"type": "string"
+},
+"entityRef": {
+"$ref": "#/definitions/EntityRef"
+},
+"fw": {
+"type": "string"
+},
+"ioVisor": {
+"$ref": "#/definitions/IOVisor"
+},
+"ip": {
+"$ref": "#/definitions/IpSettings"
+},
+"ipmiSettings": {
+"$ref": "#/definitions/IpSettings"
+},
+"moid": {
+"type": "string"
+},
+"name": {
+"type": "string"
+},
+"setAbout": {
+"default": false,
+"type": "boolean"
+},
+"setBootTime": {
+"default": false,
+"type": "boolean"
+},
+"setEnclosureSerialNumber": {
+"default": false,
+"type": "boolean"
+},
+"setEntityRef": {
+"default": false,
+"type": "boolean"
+},
+"setFw": {
+"default": false,
+"type": "boolean"
+},
+"setIoVisor": {
+"default": false,
+"type": "boolean"
+},
+"setIp": {
+"default": false,
+"type": "boolean"
+},
+"setIpmiSettings": {
+"default": false,
+"type": "boolean"
+},
+"setMoid": {
+"default": false,
+"type": "boolean"
+},
+"setName": {
+"default": false,
+"type": "boolean"
+},
+"setState": {
+"default": false,
+"type": "boolean"
+},
+"setStctlvm": {
+"default": false,
+"type": "boolean"
+},
+"setVMotionIp": {
+"default": false,
+"type": "boolean"
+},
+"setVib": {
+"default": false,
+"type": "boolean"
+},
+"state": {
+"enum": [
+"ONLINE",
+"OFFLINE",
+"INMAINTENANCE",
+"INPROGRESS"
+],
+"type": "string"
+},
+"stctlvm": {
+"$ref": "#/definitions/StCtlVM"
+},
+"vMotionIp": {
+"$ref": "#/definitions/IpSettings"
+},
+"vib": {
+"type": "string"
+},
+"vmotionIp": {
+"$ref": "#/definitions/IpSettings"
+}
+},
+"type": "object"
+},
+"VirtualMachine": {
+"properties": {
+"connectionState": {
+"type": "string"
+},
+"cpuUsage": {
+"format": "int32",
+"type": "integer"
+},
+"folder": {
+"type": "string"
+},
+"guestFamily": {
+"type": "string"
+},
+"guestFullName": {
+"type": "string"
+},
+"guestId": {
+"type": "string"
+},
+"guestState": {
+"type": "string"
+},
+"hostName": {
+"type": "string"
+},
+"id": {
+"type": "string"
+},
+"ipAddress": {
+"type": "string"
+},
+"memoryMB": {
+"format": "int32",
+"type": "integer"
+},
+"memoryUsage": {
+"format": "int32",
+"type": "integer"
+},
+"name": {
+"type": "string"
+},
+"network": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"numCpu": {
+"format": "int32",
+"type": "integer"
+},
+"powerState": {
+"type": "string"
+},
+"provisionedSize": {
+"format": "int64",
+"type": "integer"
+},
+"resourcePool": {
+"type": "string"
+},
+"storages": {
+"items": {
+"type": "string"
+},
+"type": "array"
+},
+"usedSize": {
+"format": "int64",
+"type": "integer"
+},
+"version": {
+"type": "string"
+},
+"vmPathName": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"VirtualMachineSnapshotInfo": {
+"properties": {
+"currentSnapshot": {
+"$ref": "#/definitions/ManagedObjectReference"
+},
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"rootSnapshotList": {
+"items": {
+"$ref": "#/definitions/VirtualMachineSnapshotTree"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"VirtualMachineSnapshotTree": {
+"properties": {
+"backupManifest": {
+"type": "string"
+},
+"childSnapshotList": {
+"items": {
+"$ref": "#/definitions/VirtualMachineSnapshotTree"
+},
+"type": "array"
+},
+"createTime": {
+"format": "date-time",
+"type": "string"
+},
+"description": {
+"type": "string"
+},
+"dynamicProperty": {
+"items": {
+"$ref": "#/definitions/DynamicProperty"
+},
+"type": "array"
+},
+"dynamicType": {
+"type": "string"
+},
+"id": {
+"format": "int32",
+"type": "integer"
+},
+"name": {
+"type": "string"
+},
+"quiesced": {
+"default": false,
+"type": "boolean"
+},
+"replaySupported": {
+"default": false,
+"type": "boolean"
+},
+"snapshot": {
+"$ref": "#/definitions/ManagedObjectReference"
+},
+"state": {
+"enum": [
+"poweredOff",
+"poweredOn",
+"suspended"
+],
+"type": "string"
+},
+"vm": {
+"$ref": "#/definitions/ManagedObjectReference"
+}
+},
+"type": "object"
+},
+"VmDataNetworkIpResult": {
+"properties": {
+"dataNetworkIp": {
+"type": "string"
+}
+},
+"type": "object"
+}
+},
+"host": "api.springpathinc.com",
+"info": {
+"contact": {
+"email": "techsupport@springpathinc.com",
+"name": "System Managerment API Team",
+"url": "http://www.springpathinc.com/support"
+},
+"description": "REST APIs to access core functionalities in cluster",
+"license": {
+"name": "Apache 2.0",
+"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+},
+"termsOfService": "\"termsOfService\": \"http://swagger.io/terms/\"",
+"title": "HyperFlex Legacy REST API",
+"version": "1.0.0"
+},
+"paths": {
+"/about": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVersion",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/AboutInfo"
+}
+}
+},
+"summary": "Show server version and product details",
+"tags": [
+"Cluster"
+]
+}
+},
+"/api/v1/vaai/vm/{serverId_vmId}/datanetworkip": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVMToESXHXDataNetworkIpMapping",
+"parameters": [
+{
+"in": "path",
+"name": "serverId_vmId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/VmDataNetworkIpResult"
+}
+}
+},
+"summary": "Get VM to ESX HX Data Networking IP mapping",
+"tags": [
+"Cluster"
+]
+}
+},
+"/api/v1/vaai/vm/{serverId_vmId}/snapshot": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "createVmVaaiSnapshot",
+"parameters": [
+{
+"in": "path",
+"name": "serverId_vmId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/CreateSnapshotResultDTO"
+}
+}
+},
+"summary": "Create a new native snapshot of this virtual machine",
+"tags": [
+"Cluster"
+]
+}
+},
+"/api/v1/vaai/vm/{serverId_vmId}/snapshot/{snapshotId}": {
+"put": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "deleteVmVaaiSnapshot",
+"parameters": [
+{
+"in": "path",
+"name": "serverId_vmId",
+"required": true,
+"type": "string"
+},
+{
+"in": "path",
+"name": "snapshotId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/DeleteSnapshotResult"
+},
+"type": "array"
+}
+}
+},
+"summary": "Delete Snapshot for VM with the given Id",
+"tags": [
+"Cluster"
+]
+}
+},
+"/appliances": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getAppliances",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/ApplianceDTO"
+},
+"type": "array"
+}
+}
+},
+"summary": "Shows all appliances that are part of this cluster",
+"tags": [
+"Cluster"
+]
+}
+},
+"/clone/{vmId}": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "cloneVM",
+"parameters": [
+{
+"in": "path",
+"name": "vmId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/VMCloneStatus"
+},
+"type": "array"
+}
+}
+},
+"summary": "Creates a specified number of clones of the VM. For every clone operation, the returned status will refer to the VM on success, and an error message failure",
+"tags": [
+"Cluster"
+]
+}
+},
+"/cluster/messages": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getMessages",
+"parameters": [
+{
+"in": "query",
+"name": "id",
+"required": false,
+"type": "string"
+},
+{
+"in": "query",
+"name": "type",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/EntityNameEntityMessagesPair"
+},
+"type": "array"
+}
+}
+},
+"summary": "Get a List of Messages about the operational state of the system.",
+"tags": [
+"Cluster"
+]
+}
+},
+"/cluster/network/configure/{name}": {
+"put": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "configureNetworkSettingsInCluster",
+"parameters": [
+{
+"in": "path",
+"name": "name",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Configure Network settings",
+"tags": [
+"Cluster"
+]
+}
+},
+"/cluster/refresh": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "refreshClusterStatus",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation"
+}
+},
+"summary": "Refresh Cluster status",
+"tags": [
+"Cluster"
+]
+}
+},
+"/cluster/time": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getServerTime",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/Time"
+}
+}
+},
+"summary": "Server time details",
+"tags": [
+"Cluster"
+]
+}
+},
+"/clusterVersionDetails": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getClusterVersionDetails",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StClusterVersionDetails"
+}
+}
+},
+"summary": "Gets cluster version and service details",
+"tags": [
+"Cluster"
+]
+}
+},
+"/clusters": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getClusters",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/StCluster"
+},
+"type": "array"
+}
+}
+},
+"summary": "Returns Storage Cluster list if present",
+"tags": [
+"Cluster"
+]
+}
+},
+"/datastores": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getDatastores",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/StDatastore"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show all the datastores",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "upsertDatastore",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StDatastore"
+}
+}
+},
+"summary": "Update/Add datastore",
+"tags": [
+"Cluster"
+]
+}
+},
+"/datastores/{datastoreId}": {
+"delete": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "deleteDatastore",
+"parameters": [
+{
+"in": "path",
+"name": "datastoreId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Delete Datastore for the given Id",
+"tags": [
+"Cluster"
+]
+},
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getDatastore",
+"parameters": [
+{
+"in": "path",
+"name": "datastoreId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StDatastore"
+}
+}
+},
+"summary": "Find a datastore",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "mountUnmountDatastore",
+"parameters": [
+{
+"in": "path",
+"name": "datastoreId",
+"required": true,
+"type": "string"
+},
+{
+"in": "query",
+"name": "action",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Mount/Unmount datastore",
+"tags": [
+"Cluster"
+]
+}
+},
+"/job": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "queryJob",
+"parameters": [
+{
+"in": "query",
+"name": "jobid",
+"required": false,
+"type": "string"
+},
+{
+"in": "query",
+"name": "jobtype",
+"required": false,
+"type": "string"
+},
+{
+"default": 0,
+"format": "int32",
+"in": "query",
+"name": "jobstate",
+"required": false,
+"type": "integer"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StJob"
+}
+}
+},
+"summary": "Show the status of a Job",
+"tags": [
+"Cluster"
+]
+}
+},
+"/network/smtp": {
+"delete": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "clearSMTPConfiguration",
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Clear the SMTP configuration",
+"tags": [
+"Cluster"
+]
+},
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getSMTPConfiguration",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StSMTPConfiguration"
+}
+}
+},
+"summary": "Retrieve the SMTP server information",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "setSMTPConfiguration",
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Set the SMTP configuration",
+"tags": [
+"Cluster"
+]
+}
+},
+"/network/{serverType}": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getServersList",
+"parameters": [
+{
+"in": "path",
+"name": "serverType",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"type": "object"
+},
+"type": "array"
+}
+}
+},
+"summary": "List DNS/NTP server list",
+"tags": [
+"Cluster"
+]
+}
+},
+"/network/{serverType}/{operationType}": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "updateServerList",
+"parameters": [
+{
+"in": "path",
+"name": "serverType",
+"required": true,
+"type": "string"
+},
+{
+"in": "path",
+"name": "operationType",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"type": "object"
+},
+"type": "array"
+}
+}
+},
+"summary": "Sets, clears, adds, or removes the DNS/NTP server list",
+"tags": [
+"Cluster"
+]
+}
+},
+"/networkconfig": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getNetworkConfiguration",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StNetworkSettings"
+}
+}
+},
+"summary": "Show network configuration of the Storage Controller VM",
+"tags": [
+"Cluster"
+]
+}
+},
+"/postevent": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "postEvent",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation"
+}
+},
+"summary": "Post an event to vCenter Cluster",
+"tags": [
+"Cluster"
+]
+}
+},
+"/security/whitelist": {
+"delete": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "clearIPWhitelistEntries",
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Clear all IP white listed entries in IP tables",
+"tags": [
+"Cluster"
+]
+},
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getIPWhitelistEntries",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"type": "object"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show all IP white listed entries in IP tables",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "updateIPWhitelistEntries",
+"parameters": [
+{
+"default": "service",
+"in": "query",
+"name": "action",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Add/Remove all IP white listed entries in IP tables",
+"tags": [
+"Cluster"
+]
+}
+},
+"/snapshots/{entityId}": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "createSnapshots",
+"parameters": [
+{
+"in": "path",
+"name": "entityId",
+"required": true,
+"type": "string"
+},
+{
+"in": "query",
+"name": "type",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"type": "object"
+},
+"type": "array",
+"uniqueItems": true
+}
+}
+},
+"summary": "Create a new native snapshot of this virtual machine/folder/resourcePool",
+"tags": [
+"Cluster"
+]
+}
+},
+"/summary": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getStorageSummary",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StClusterSummary"
+}
+}
+},
+"summary": "Show storage summary",
+"tags": [
+"Cluster"
+]
+}
+},
+"/time": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getcurrentTime",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"format": "date-time",
+"type": "string"
+}
+}
+},
+"summary": "Show server time",
+"tags": [
+"Cluster"
+]
+}
+},
+"/timezone": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getTimeZone",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"type": "string"
+}
+}
+},
+"summary": "Show server timezone",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "setTimeZone",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation"
+}
+},
+"summary": "Change server timezone",
+"tags": [
+"Cluster"
+]
+}
+},
+"/upgrade/check": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "checkUpgradeService",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/ReleaseManifest"
+},
+"type": "array"
+}
+}
+},
+"summary": "Check cluster Upgrade service",
+"tags": [
+"Cluster"
+]
+}
+},
+"/upgrade/cluster": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "clusterUpgradeStatus",
+"parameters": [
+{
+"in": "query",
+"name": "status",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StJob"
+}
+}
+},
+"summary": "Check cluster Upgrade Status",
+"tags": [
+"Cluster"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "clusterUpgradeService",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/StJob"
+}
+}
+},
+"summary": "Upgrade Storage cluster",
+"tags": [
+"Cluster"
+]
+}
+},
+"/upgrade/cluster/validations": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "checkClusterUpgradeValidations",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"type": "string"
+}
+}
+},
+"summary": "Validate cluster Upgrade service",
+"tags": [
+"Cluster"
+]
+}
+},
+"/upgrade/node": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "nodeUpgradeService",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation"
+}
+},
+"summary": "Upgrade service on a node",
+"tags": [
+"Cluster"
+]
+}
+},
+"/usercontext": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getUserContext",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/UserContext"
+}
+}
+},
+"summary": "Show user context",
+"tags": [
+"Cluster"
+]
+}
+},
+"/virtplatform/alarms": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getAlarms",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/Alarm"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show All Alarms",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/alarms/acknowledge": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "acknowledgeAlarm",
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Acknowledge Alarm",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/alarms/reset": {
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "resetAlarm",
+"produces": [
+"application/json"
+],
+"responses": {
+"default": {
+"description": "successful operation"
+}
+},
+"summary": "Resetting Alarm to green",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/cluster": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVirtCluster",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/Cluster"
+}
+}
+},
+"summary": "Show Virtual Cluster",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/customspecs": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getCustomSpecs",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/CustomSpec"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show all Custom Specifications",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/events": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getEvents",
+"parameters": [
+{
+"description": "startIndex for retrieving next chunk of Events",
+"format": "int32",
+"in": "query",
+"name": "start",
+"required": false,
+"type": "integer"
+},
+{
+"description": "Number of the events to be retrieved per page",
+"format": "int32",
+"in": "query",
+"name": "size",
+"required": false,
+"type": "integer"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/Event"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show All Events",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/resourcepools": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getResourcePools",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/ResourcePool"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show All Resource Pools",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/resourcepools/{resourcePoolId}": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getResourcePool",
+"parameters": [
+{
+"in": "path",
+"name": "resourcePoolId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/ResourcePool"
+}
+}
+},
+"summary": "Show Resource Pool Details",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/snapshots/{vmId}": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getSnapshot",
+"parameters": [
+{
+"in": "path",
+"name": "vmId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/VirtualMachineSnapshotInfo"
+}
+}
+},
+"summary": "Show Snapshot Details",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/vmfolders": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVMFolders",
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"items": {
+"$ref": "#/definitions/Folder"
+},
+"type": "array"
+}
+}
+},
+"summary": "Show All Folders",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/vmfolders/{folderId}": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVMFolder",
+"parameters": [
+{
+"in": "path",
+"name": "folderId",
+"required": true,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/Folder"
+}
+}
+},
+"summary": "Show Folder Details",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/vms": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVirtualMachines",
+"parameters": [
+{
+"in": "query",
+"name": "id",
+"required": false,
+"type": "string"
+},
+{
+"default": "VIRTCLUSTER",
+"in": "query",
+"name": "entityType",
+"required": false,
+"type": "string"
+},
+{
+"in": "query",
+"name": "forceRefresh",
+"required": false,
+"type": "boolean"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation"
+}
+},
+"summary": "Show All Virtual Machines",
+"tags": [
+"Virtual Platform"
+]
+}
+},
+"/virtplatform/vms/{vmId}": {
+"get": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "getVirtualMachine",
+"parameters": [
+{
+"in": "path",
+"name": "vmId",
+"required": true,
+"type": "string"
+},
+{
+"in": "query",
+"name": "id",
+"required": false,
+"type": "string"
+},
+{
+"default": "VIRTCLUSTER",
+"in": "query",
+"name": "entityType",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/VirtualMachine"
+}
+}
+},
+"summary": "Show Virtual Machine Details",
+"tags": [
+"Virtual Platform"
+]
+},
+"post": {
+"consumes": [
+"application/json"
+],
+"description": "",
+"operationId": "powerOnOffVM",
+"parameters": [
+{
+"in": "path",
+"name": "vmId",
+"required": true,
+"type": "string"
+},
+{
+"in": "query",
+"name": "action",
+"required": false,
+"type": "string"
+}
+],
+"produces": [
+"application/json"
+],
+"responses": {
+"200": {
+"description": "successful operation",
+"schema": {
+"$ref": "#/definitions/TaskInfo"
+}
+}
+},
+"summary": "Power On/Off/Suspend Virtual Machine",
+"tags": [
+"Virtual Platform"
+]
+}
+}
+},
+"schemes": [
+"http",
+"https"
+],
+"swagger": "2.0",
+"tags": [
+{
+"name": "Cluster"
+},
+{
+"description": "Data Protection APIs",
+"name": "Data Protection"
+},
+{
+"description": "Deployment resource APIs",
+"name": "Installer"
+},
+{
+"description": "Virtplatform resource APIs",
+"name": "Virtual Platform"
+}
+]
+}

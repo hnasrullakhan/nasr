@@ -1,0 +1,5 @@
+---
+source_dir: swagger-webapp.yaml
+objects:
+  - name: about
+  - name: summary
