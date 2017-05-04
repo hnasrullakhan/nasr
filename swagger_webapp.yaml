@@ -1,6 +1,6 @@
 {
 "basePath": "/rest",
-"definitions": {
+"definitions": {`
 "AboutInfo": {
 "properties": {
 "apiVersion": {
