@@ -6,12 +6,12 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
-type model struct{
+type Model struct{
 	Source_dir string
-	Objects	[]*shipObject
+	Relationships	[]*Relations
 }
 
-type shipObject struct {
+type Relations struct {
 	Name string
 }
 
@@ -25,9 +25,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println( "// defining array of struct shipObject" )
-	fmt.Print(string(file))
-	var mod *model
+	var mod *Model
 
 	err2 := yaml.Unmarshal(file, &mod)
 	if err2 != nil {
@@ -35,9 +33,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println( "// loop over array of structs of shipObject" )
-	fmt.Printf( "The model '%s\n", mod.Source_dir  );
-	for k := range mod.Objects {
-		fmt.Printf( "The name %s \n", mod.Objects[k].Name);
+	fmt.Println( "// loop over array of structs of Relations" )
+	fmt.Printf( "The Model '%s\n", mod.Source_dir  );
+	for k := range mod.Relationships {
+		fmt.Printf( "The name %s \n", mod.Relationships[k].Name);
 	}
 }

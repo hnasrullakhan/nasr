@@ -5,17 +5,18 @@ import (
 	"os"
 
 	"encoding/json"
+	"github.com/buger/jsonparser"
 )
 
 
 type Swagger struct{
 	Swagger string   `json:"swagger"`
-	Paths  interface{} `json:"paths"`
-	//Paths 	[]*PathWrapper
-	Definitions interface{} `json:"definitions"`
+	Paths json.RawMessage
+	//Paths  interface{} `json:"paths"`
 	//Definitions interface{} `json:"definitions"`
+	Definitions json.RawMessage
 }
-/*
+
 type PathWrapper struct {
 	DynamicPaths 	interface{} `json:"paths"`
 }
@@ -23,9 +24,8 @@ type PathWrapper struct {
 
 type definitions struct {
 	DynamicDefs 	map[string]interface{} `json:"definitions"`
-	//DynamicDefs 	interface{} `json:"-"`
 
-}*/
+}
 func main() {
 	filePath := "./swagger_webapp.json";
 	fmt.Printf( "// reading file %s\n", filePath )
@@ -40,14 +40,17 @@ func main() {
 	var swag *Swagger
 	err2 := json.Unmarshal(file,&swag)
 	fmt.Printf("this is swag value : %s \n",swag.Swagger)
-	//for k := range swag.Paths {
-	fmt.Printf( "The paths %s \n", (swag.Paths));
+	var path *PathWrapper
+	err3 := json.Unmarshal(swag.Paths, &path)
+	fmt.Printf( "The paths %s \n", swag.Paths);
 	fmt.Println("================================")
-	fmt.Printf( "The defintion %s \n", (swag.Definitions));
-	if err2 != nil {
+	var v json.RawMessage
+	v,_,_,_ =jsonparser.Get(swag.Paths,"/about","get","responses","200","schema")
+	fmt.Printf("%s\n",(v))
+	fmt.Println("================================")
 
-		//}
-	}
-	fmt.Print(err2)
+	//fmt.Printf( "The defintion %s \n", (swag.Definitions));
+	fmt.Print(err2,err3)
+
 }
 

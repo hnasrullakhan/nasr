@@ -4,6 +4,7 @@ import (
 	"github.com/buger/jsonparser"
 	"fmt"
 	"io/ioutil"
+	"encoding/json"
 )
 func main() {
 	/*
@@ -31,13 +32,14 @@ func main() {
 	fmt.Printf( "// reading file %s\n", filePath )
 	file, err1 := ioutil.ReadFile(filePath )
 	//fmt.Print(string(file))
-	v,_,_,_ :=jsonparser.Get(file, "paths","/about","get","responses","200","schema","$ref")
+	var v json.RawMessage
+	v,_,_,_ =jsonparser.Get(file, "paths","/about","get","responses","200","schema")
 	fmt.Printf("this is get %s \n",string(v))
 
 	if err1 != nil {
 		fmt.Print("this is inside if")
 		v,_,_,_ :=jsonparser.Get(file, "basePath")
-		fmt.Printf("this is get %s",string(v))
+		fmt.Printf("this is get %s",(v))
 	}
         /*
 	// You can specify key path by providing arguments to Get function
